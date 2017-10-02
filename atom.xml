@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>梦风者de博客</title>
+  <subtitle>0x5f3759df</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://xiazeyu_2011.coding.me/"/>
+  <updated>2017-10-02T00:27:19.571Z</updated>
+  <id>https://xiazeyu_2011.coding.me/</id>
+  
+  <author>
+    <name>windydreamer</name>
+    <email>xiazeyu_2011@126.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>happy_birthday_jhz_2017</title>
+    <link href="https://xiazeyu_2011.coding.me/2017/08/26/happy-birthday.html"/>
+    <id>https://xiazeyu_2011.coding.me/2017/08/26/happy-birthday.html</id>
+    <published>2017-08-26T15:31:07.000Z</published>
+    <updated>2017-10-02T00:27:19.571Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="happy-birthday"><a class="markdownIt-Anchor" href="#happy-birthday"></a> Happy Birthday,</h2>
+<h3 id="jhz"><a class="markdownIt-Anchor" href="#jhz"></a> JHZ!</h3>
+<!-- more -->
+]]></content>
+    
+    <summary type="html">
+    
+      JHZ 生日快乐~
+    
+    </summary>
+    
+      <category term="杂记" scheme="https://xiazeyu_2011.coding.me/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+      <category term="生日祝福" scheme="https://xiazeyu_2011.coding.me/tags/%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>stdsrc头文件记录</title>
+    <link href="https://xiazeyu_2011.coding.me/2017/08/19/stdsrc-note.html"/>
+    <id>https://xiazeyu_2011.coding.me/2017/08/19/stdsrc-note.html</id>
+    <published>2017-08-19T14:00:30.000Z</published>
+    <updated>2017-10-02T00:25:28.866Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/xiazeyu/OI_Resource/blob/master/Cpp_Programs/stdsrc.cpp" target="_blank" rel="external">源文件</a></p>
+<a id="more"></a>
+<h2 id="头文件"><a class="markdownIt-Anchor" href="#头文件"></a> 头文件</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LuN 100069</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> OJ</span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qmin</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123; <span class="comment">// 位运算加速的求较小数 - 返回值 较小数 </span></div><div class="line">	<span class="keyword">int</span> diff = b - a;</div><div class="line">	<span class="comment">// b &lt; a : a + (diff &amp; -1)</span></div><div class="line">	<span class="comment">// b &gt; a : a + (diff &amp; 0)</span></div><div class="line">	<span class="keyword">return</span> a + (diff &amp; (diff &gt;&gt; <span class="number">31</span>));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qmax</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123; <span class="comment">// 位运算加速的求较大数 - 返回值 较大数 </span></div><div class="line">	<span class="keyword">int</span> diff = b - a;</div><div class="line">	<span class="comment">// b &lt; a : b - (diff &amp; -1)</span></div><div class="line">	<span class="comment">// b &gt; a : b - (diff &amp; 0)</span></div><div class="line">	<span class="keyword">return</span> b - (diff &amp; (diff &gt;&gt; <span class="number">31</span>));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qabs</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123; <span class="comment">// 位运算加速的绝对值  - 返回值 绝对值 </span></div><div class="line">	<span class="keyword">int</span> t = (a &gt;&gt; <span class="number">31</span>);</div><div class="line">	<span class="keyword">return</span> (a + t) ^ t;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123; <span class="comment">// 判断奇偶性 - 返回 1 是奇数; 返回 0 是偶数 </span></div><div class="line">	<span class="keyword">return</span> a &amp; <span class="number">1</span> == <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">qswap</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span>* b)</span></span>&#123; <span class="comment">// 位运算加速的快速交换 - 用法 qswap(&amp;a, &amp;b);</span></div><div class="line">	(*a) ^= (*b) ^= (*a) ^= (*b);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qread</span><span class="params">()</span></span>&#123; <span class="comment">// 快速读入int - 返回 读入的数 </span></div><div class="line">	<span class="keyword">char</span> c = getchar();</div><div class="line">	<span class="keyword">int</span> f = <span class="number">1</span>, x = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123;<span class="keyword">if</span>(c == <span class="string">'-'</span>) f= <span class="number">-1</span>; c = getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))&#123;x = x * <span class="number">10</span> + c - <span class="string">'0'</span>; c = getchar();&#125;</div><div class="line">	<span class="keyword">return</span> f * x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="meta">#<span class="meta-keyword">ifndef</span> OJ</span></div><div class="line">	freopen(<span class="string">"test.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">	freopen(<span class="string">"test.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line">	<span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="meta">#<span class="meta-keyword">ifndef</span> OJ</span></div><div class="line">	fclose(<span class="built_in">stdin</span>);</div><div class="line">	fclose(<span class="built_in">stdout</span>);</div><div class="line">	<span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!-- more -->
+<h2 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h2>
+<ul>
+<li>
+<p>12行 关于inline内联函数的使用：<br>
+inline的作用是替代C语言中define的。<br>
+<a href="https://baike.baidu.com/item/inline/10566989?fr=aladdin" title="inline 百度百科" target="_blank" rel="external">inline [百度百科]</a>：define<strong>不能进行参数有效性的检测</strong>，也就<strong>不能享受C++编译器严格类型检查的好处</strong>，另外它的<strong>返回值也不能被强制转换为可转换的合适的类型</strong>而且存在<strong>二义性问题</strong></p>
+</li>
+<li>
+<p>12行 关于位运算max&amp;min&amp;abs<br>
+<a href="http://blog.csdn.net/chaosllgao/article/details/6185319" title="位运算实现int的abs/min/max函数 [CSDN]" target="_blank" rel="external">位运算实现int的abs/min/max函数 [CSDN]</a></p>
+</li>
+<li>
+<p>12行 关于C++常用位运算<br>
+<a href="http://blog.csdn.net/zouliping123/article/details/8995373" title="C/C++位运算技巧 [CSDN]" target="_blank" rel="external">C/C++位运算技巧 [CSDN]</a></p>
+</li>
+<li>
+<p>45行 关于文件操作<br>
+<a href="https://github.com/LoveYayoi/OI-Package/blob/master/DS%26Algorithm-Models/%E7%BC%BA%E7%9C%81%E6%BA%90%E4%B8%80%E7%B1%BB/std_src.cpp" title="LoveYayoi的std_src.cpp源码 [GitHub]" target="_blank" rel="external">LoveYayoi的std_src.cpp源码 [GitHub]</a> 网上其他教程实在是太坑爹了<br>
+C的文件操作 <a href="http://blog.chinaunix.net/uid-11600035-id-2866019.html" title="C语言中输入输出重定，freopen()妙用。 [ChinaUnix]" target="_blank" rel="external">C语言中输入输出重定，freopen()妙用。 [ChinaUnix]</a><br>
+判断是否度入到文件尾</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> t;</div><div class="line"><span class="keyword">while</span>(!feof(<span class="built_in">stdin</span>))&#123;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;t&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>35行 关于快速读入<br>
+<a href="http://blog.csdn.net/WhiStLenA/article/details/51712580" title="快速读入 [CSDN]" target="_blank" rel="external">快速读入 [CSDN]</a><br>
+<a href="https://www.zhihu.com/question/49059234" title="如何看待在OI/ACM赛事广为使用的快速读入整数？ [ZhiHu]" target="_blank" rel="external">如何看待在OI/ACM赛事广为使用的快速读入整数？ [ZhiHu]</a></p>
+</li>
+<li>
+<p>读入string/char之类的最好直接cin、cout，**千万不要自己判&quot;\n&quot;**免得莫名被卡</p>
+</li>
+<li>
+<p>好文章之ACM常用工具函数整理<br>
+<a href="http://blog.csdn.net/sr_19930829/article/details/46048571" title="[ACM]常用工具函数整理 [CSDN]" target="_blank" rel="external">[ACM]常用工具函数整理 [CSDN]</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      编写stdsrc标准“头文件”的记录
+    
+    </summary>
+    
+      <category term="C++编程技巧" scheme="https://xiazeyu_2011.coding.me/categories/C-%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="记录" scheme="https://xiazeyu_2011.coding.me/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="C++" scheme="https://xiazeyu_2011.coding.me/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://xiazeyu_2011.coding.me/2017/08/19/hello-world.html"/>
+    <id>https://xiazeyu_2011.coding.me/2017/08/19/hello-world.html</id>
+    <published>2017-08-19T11:59:30.000Z</published>
+    <updated>2017-10-02T00:20:53.167Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
+<p>emmm, 一万年总算吧Hexo和Node.js环境搞完了乱多坑，累死了。</p>
+<p>顺便还支持了<a href="https://github.com/crazy-max/nodejs-portable" target="_blank" rel="external">Nodejs-Portable</a> ，记得来Star一下哦~</p>
+<p>感觉可能还是静态站好一些吧，暂时也用不到动态站的很多功能= =</p>
+<blockquote>
+<p>不去换个环境， 你永远不知道你错过的是什么样的精彩</p>
+</blockquote>
+<p>2017.08.19 20:02:22</p>
+<a id="more"></a>
+<h1 id="wordpressoutofdate"><a class="markdownIt-Anchor" href="#wordpressoutofdate"></a> Wordpress(outofdate)</h1>
+<blockquote>
+<p>总算把服务器搭完了，接下来是<s>慢慢</s>满满的期待呢。</p>
+<p>– WordPress 2017.7.14 13:33:33</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      建站初日志
+    
+    </summary>
+    
+      <category term="站点日志" scheme="https://xiazeyu_2011.coding.me/categories/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/"/>
+    
+    
+      <category term="建站" scheme="https://xiazeyu_2011.coding.me/tags/%E5%BB%BA%E7%AB%99/"/>
+    
+      <category term="记录" scheme="https://xiazeyu_2011.coding.me/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+</feed>
