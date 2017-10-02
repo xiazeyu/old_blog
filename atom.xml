@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xiazeyu_2011.coding.me/"/>
-  <updated>2017-10-02T00:27:19.571Z</updated>
+  <updated>2017-10-02T07:00:24.115Z</updated>
   <id>https://xiazeyu_2011.coding.me/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>happy_birthday_jhz_2017</title>
-    <link href="https://xiazeyu_2011.coding.me/2017/08/26/happy-birthday.html"/>
-    <id>https://xiazeyu_2011.coding.me/2017/08/26/happy-birthday.html</id>
+    <title>Happy Birthday JHZ!</title>
+    <link href="https://xiazeyu_2011.coding.me/2017/08/26/happy-birthday-jhz-2017.html"/>
+    <id>https://xiazeyu_2011.coding.me/2017/08/26/happy-birthday-jhz-2017.html</id>
     <published>2017-08-26T15:31:07.000Z</published>
-    <updated>2017-10-02T00:27:19.571Z</updated>
+    <updated>2017-10-02T07:00:24.115Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>
 <h2 id="happy-birthday"><a class="markdownIt-Anchor" href="#happy-birthday"></a> Happy Birthday,</h2>
@@ -112,7 +112,7 @@ C的文件操作 <a href="http://blog.chinaunix.net/uid-11600035-id-2866019.html
     <link href="https://xiazeyu_2011.coding.me/2017/08/19/hello-world.html"/>
     <id>https://xiazeyu_2011.coding.me/2017/08/19/hello-world.html</id>
     <published>2017-08-19T11:59:30.000Z</published>
-    <updated>2017-10-02T00:20:53.167Z</updated>
+    <updated>2017-10-02T07:24:45.587Z</updated>
     
     <content type="html"><![CDATA[<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
 <p>emmm, 一万年总算吧Hexo和Node.js环境搞完了乱多坑，累死了。</p>
@@ -123,6 +123,7 @@ C的文件操作 <a href="http://blog.chinaunix.net/uid-11600035-id-2866019.html
 </blockquote>
 <p>2017.08.19 20:02:22</p>
 <a id="more"></a>
+<p><a href="http://www.uisdc.com/design-perfect-favicon-icon" target="_blank" rel="external">一个生成Modern ICON的好工具呦</a></p>
 <h1 id="wordpressoutofdate"><a class="markdownIt-Anchor" href="#wordpressoutofdate"></a> Wordpress(outofdate)</h1>
 <blockquote>
 <p>总算把服务器搭完了，接下来是<s>慢慢</s>满满的期待呢。</p>
@@ -139,9 +140,9 @@ C的文件操作 <a href="http://blog.chinaunix.net/uid-11600035-id-2866019.html
       <category term="站点日志" scheme="https://xiazeyu_2011.coding.me/categories/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/"/>
     
     
-      <category term="建站" scheme="https://xiazeyu_2011.coding.me/tags/%E5%BB%BA%E7%AB%99/"/>
-    
       <category term="记录" scheme="https://xiazeyu_2011.coding.me/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="建站" scheme="https://xiazeyu_2011.coding.me/tags/%E5%BB%BA%E7%AB%99/"/>
     
   </entry>
   
