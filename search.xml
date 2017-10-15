@@ -8,9 +8,10 @@
       <content type="html"><![CDATA[<p>应该是最后一次参加NOIP了吧，已经高二了时间和心思也不能安心得抽出来了。就认真总结一下这次的初赛卷吧。</p>
 <a id="more"></a>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=40257852&auto=1&height=66"></iframe>
-<p>#初赛分析</p>
+<h1 id="初赛分析"><a class="markdownIt-Anchor" href="#初赛分析"></a> 初赛分析</h1>
 <h3 id="试卷及答案资源"><a class="markdownIt-Anchor" href="#试卷及答案资源"></a> 试卷及答案资源</h3>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> scanningCopy/problems.pdf 试卷原题 %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> NOIP2017提高组参考答案.pdf 参考答案 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+
+
 <p>说个笑话：试卷底部印着NOIP 2016 提高初赛</p>
 <h3 id="题目分析"><a class="markdownIt-Anchor" href="#题目分析"></a> 题目分析</h3>
 <p>有些题目自己错了，而且只有答案，并不知道正解，所以打个*区分</p>
