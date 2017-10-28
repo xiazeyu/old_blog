@@ -1,57 +1,454 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[2017个人疑惑]]></title>
-    <url>%2F2017%2F10%2F20%2F2017pP.html</url>
-    <content type="text"><![CDATA[function doDecrypt(pwd, onError) { console.log("in doDecrypt"); var txt = document.getElementById("enc_content").innerHTML; var plantext; try { var bytes = CryptoJS.AES.decrypt(txt, pwd); plaintext = bytes.toString(CryptoJS.enc.Utf8); } catch(err) { if(onError) {onError(err);} return; } document.getElementById("enc_content").innerHTML = plaintext; document.getElementById("enc_content").style.display = "block"; document.getElementById("enc_passwd").style.display = "none"; } U2FsdGVkX1+hBjdcZFAVF3/iISVUU0CYck2dneHIoeN7GXjhvXNo35ABjD+Zt/YkDiYx6p8CXKEBFUNbonphNhnFAWzeQwnnDCad4cokP2Fj6UoLEACRm1RDjPhuKEcjgnW1epr9nmPyNOfhPsVzmj39EZRJtEMHoIGQ26QDKhfOnxV0IEOe+TwMBAywUcy38iejaIX56n3ljxEJhE7GJFS9gs4FbeQJUgE5YKCTGaZWNtlnQDoO8JkdUsQBaelC var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[NOIP 2017 提高组初赛总结]]></title>
-    <url>%2F2017%2F10%2F14%2Fnoip2017Preliminary.html</url>
-    <content type="text"><![CDATA[应该是最后一次参加NOIP了吧，已经高二了时间和心思也不能安心得抽出来了。就认真总结一下这次的初赛卷吧。 初赛分析 试卷及答案资源 GitHub 说个笑话：试卷底部印着NOIP 2016 提高初赛 题目分析 有些题目我自己错了，而且只有答案，并不知道正解，所以打个*区分 单项选择 坑爹题目= = 日常摸奖(1/2)系列 [NOI官网]的官网神奇公告 其实这道题原本在圈子里听说了，所以可以做出来的，但是日期就是这么迷迷糊糊地记错了 2020年 NOI系列赛 不支持Pascal 2022年 NOIP系列赛 不支持Pascal… 结果错选了2020年。怎么说呢？ 记得不准确 吧。 常识，没什么好说的 直接丢一篇我当时复习时认为最好的文章 [CSDN]计算机原码、反码、补码详解 空间单位换算 $ 1600 * 900 * 16 / (8 * 1024) = 2812.5$ *数学题 （听说今年初赛考的数学题特别多？） 赛后分析：2016年10月1日是周六，2012年10月1日是星期一…然后发现 $ 365 \bmod{ 7 } = 1$ 。感觉不对劲？作了一张表 日期 星期真实 星期考试时猜测 2017.10.1 日 日 2016.10.1 六 六 2015.10.1 四 六 2014.10.1 三 六 2013.10.1 二 六 2012.10.1 一 五 2011.10.1 六 五 … … … 1950.10.1 日 三 1949.10.1 六 三 1948.10.4 五 三 这也差太远了吧！其实貌似推算星期也不只是隔4年变一天这么简单的 一开始发现 [CSDN]计算任何一天是星期几的几种算法 有一个 Zeller公式 可以使用，但是估计是记不住。 然后又找到了 [博客园]日历查询的算法 如何计算某一天是星期几 中详细的推导过程。 最朴素的计算方法是计算 $ 中间间隔的总天数 \bmod 7$ 。中间要注意2000年是闰年，还可以把1949年12月31日和2017年12月31日作为2个原点。然后 $ ((2017-1949 = 68) * 365 + (91 - 91) + 17 = 24837) \bmod 7 = 1 $ 写了段程序暴力验证结果也是 24837 天 点击显/隐代码 1234567891011121314151617181920212223242526272829303132333435363738394041424344int year = 1949, month = 10, day = 1, totdays = 0;int check()&#123; if(year != 2017) return false; if(month != 10) return false; if(day != 1) return false; return true;&#125;int main()&#123; while(!check())&#123;// printf("%d%d%d,%d\n",year,month,day,totdays); if((month == 2)&amp;&amp;(day == 28))&#123; if(year % 4 == 0)&#123; month = 3; day = 1; totdays+= 2; &#125;else&#123; month = 3; day = 1; totdays++; &#125; &#125;else if((month == 12)&amp;&amp;(day == 31))&#123; year++; month = 1; day = 1; totdays++; &#125;else if((day == 30)&amp;&amp;(month != 12))&#123; if(month == 1||month == 3||month == 5||month == 7||month == 8|| month == 10)&#123; day = 31; totdays++; day = 1; totdays++; month++; &#125;else&#123; month++; day = 1; totdays++; &#125; &#125;else &#123;day++; totdays++;&#125; &#125; cout &lt;&lt; totdays &lt;&lt; endl; return 0;&#125; 然而还不是很确定这样解对不对，不过至少答案看起来是对的 图论+数学 基础题 树的基本性质：总边数 = 结点数 - 1 由此可以推得： $ m - k = n - 1 $ 解得 $ k = m - n + 1 $ *求时间复杂度 与NOIP2013初赛15题相类似。 正解都可以用 [网易博客]主项定理 Master Method 来求解，估计也是求时间复杂的的正解。我是还没怎么看懂，猜主要思想应该是把时间复杂度建立为一个 $ T(n) = a * T(n / b) + f(n) $ 的模型，然后比较 $ f(n) $ 与 $ n^{\log_b a} $ 两者的变化幅度（也就是数量级），取其中较大的那一个。 这题解也不是很确定，猜可能带入特殊值是这样观察的： $ T(1) = 1 $ $ T(2) = 2T(1) + 2 \log 2 = 2+2 \log 2 $ $ T(3) = 2T(1) + 3 \log 3 = 2+3 \log 3 $ $ T(4) = 2T(2) + 4 \log 4 = 4 + 4 \log 2 + 2 \log 2 = 4 + 3(\log4) \approx n\log n???$ $ T(5) = 2T(2) + 5 \log 5 = 4 + 4 \log 2 + 5 \log 5 $ 好吧， 复盘带入计算也不知道 怎么能得出C解。 不过总结了下主项定理，应该是判断出 $ f(n) = n \log n =n^{\log_22} $ 即 数量级相当 ，然后得出时间复杂度在 $ f(n) $ 的基础上乘以 $ \log n $ 得出 $ O(n \log^2 n) $ 的。 常识，模拟栈操作 *目测是图论+“极简单”的排列组合 先明确一下定义：简单无向连通图 连通：指任意2个点有路径相连[1] 无向：任意一条连接u、v的边都表示u连v和v连u[1:1] 简单图：不存在平行边和自环的图[2] 所以说我的思路是找那些可以90°旋转4次而各不相同的种类数，再寻找只能180°旋转和不能旋转的种类数。但是貌似 漏了2条对角线加一条边 的这种情况，而且遗漏了其它能旋转的图形。 可能是 枚举的方法 不对（我是按加边枚举的，不知道有没有更好的方法） 隔板法！这玩意在考试之前还仔细研究过，是一个好东西。[百度百科]隔板法 就是 $ C^{空隔数}_{要插入的隔板数} $ 在本题中则为 $ C^9_3 $ 再牢记 $ C^n_m = m! / (n!(m-n)!) $ 轻松解决 *据说正解是递推公式求通项公式，（感觉用微积分可以做，然而没学），我是手工暴力到 $ 21/32 $ 或者多少分之64然后找规律做的。 *估计应该是 题目意思弄错了 。题目给的2个数组是 有序数组 ，而 [百度]归并排序-复杂度 中所得出的时间复杂度应该是指数组无序的情况。有序的最坏情况可能是： 设 $ n=5 $ 1-1;1-2;2-2;2-3;3-3;3-4;4-4;4-5;5-5 共 $ 2n-1=9 $ 种这个意思，而不是无序数组的从头归并。 经典数学题 A与B比较，若相等，则假币必在C，否则假币在A。最后统计n数量确认是否继续搜索 经典dp [Luogu]P1216 [USACO1.5]数字三角形 Number Triangles &amp; IOI94 数字三角形 印象特别深，因为据说是OI界第一道dp的题目。思路很简单，从左和从右路径中取一个较大路径继续走即可。 注意！此处由于所求的是路径上的数之和，与种数等无关，因此不可作死+1 *数学 计算概率，至今不会计算 数学 水题 $ 1 / 20 * 360 = 18 $ 几何概型 不定项选择 对归并排序的还不是很熟悉，这张卷子又考了很多次归并，所以漏选了 栈模拟 这道题我备考时找到了这篇文章，挺不错的[cnblog]稳定排序和不稳定排序 常识 摸奖日常蹦(2/2) 王选奖貌似是CCF承办的一个奖项 问题求解 这道题在挑战程序设计竞赛上有类似的题型[3] ，貌似是用数学方法做的 暴力求解的，最小方案数漏了一种？ 阅读程序写结果 暴力递归，把整棵树都画下来即可 看不出有什么规律 和拓扑排序有关的题目，应该是考你会不会拓扑的实现一类的 非常巧妙的几何题，从给定坐标出发不断以斜率为1或-1反弹，直到4角终止 完成程序 好吧，大整数除法一开始没看到题目中有%的操作，所以说做得非常迷茫，最后答案也没对几个。 ​最长路径，感觉在哪里想过 个人总结 虽说是复盘，但是再看一遍还是好多题目不会。看来还是太水了。 感觉最后一个星期狂刷往届试卷非常非常有用。 20171020 成绩终于还是出来了，13.5+4.5+2+10+7=37。嗯，怎么说呢，果然还是太菜了呢，需要更加努力。 https://baike.baidu.com/item/连通无向图 ↩︎ ↩︎ https://baike.baidu.com/item/简单图 ↩︎ P150 3.2.2 — 挑战程序设计竞赛 第二版·人民邮电出版社·【日】秋叶拓哉 岩田阳一 北川宜稔·ISBN 978-7-115-32010-0 ↩︎]]></content>
-      <categories>
-        <category>总结</category>
-      </categories>
-      <tags>
-        <tag>记录</tag>
-        <tag>C++</tag>
-        <tag>NOIP</tag>
-        <tag>总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Happy Birthday JHZ!]]></title>
-    <url>%2F2017%2F08%2F26%2Fhappy-birthday-jhz-2017.html</url>
-    <content type="text"><![CDATA[Happy Birthday, JHZ!]]></content>
-      <categories>
-        <category>杂记</category>
-      </categories>
-      <tags>
-        <tag>生日祝福</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[stdsrc头文件记录]]></title>
-    <url>%2F2017%2F08%2F19%2Fstdsrc-note.html</url>
-    <content type="text"><![CDATA[源文件 头文件 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#include &lt;bits/stdc++.h&gt;#define LuN 100069#define Inf 0x3f3f3f3f#define ll long long#define ull unsigned long long#define pb push_back#define mp make_pair#define OJusing namespace std;inline int qmin(int a, int b)&#123; // 位运算加速的求较小数 - 返回值 较小数 int diff = b - a; // b &lt; a : a + (diff &amp; -1) // b &gt; a : a + (diff &amp; 0) return a + (diff &amp; (diff &gt;&gt; 31));&#125;inline int qmax(int a, int b)&#123; // 位运算加速的求较大数 - 返回值 较大数 int diff = b - a; // b &lt; a : b - (diff &amp; -1) // b &gt; a : b - (diff &amp; 0) return b - (diff &amp; (diff &gt;&gt; 31));&#125;inline int qabs(int a)&#123; // 位运算加速的绝对值 - 返回值 绝对值 int t = (a &gt;&gt; 31); return (a + t) ^ t;&#125;inline bool isOdd(int a)&#123; // 判断奇偶性 - 返回 1 是奇数; 返回 0 是偶数 return a &amp; 1 == 1;&#125;inline void qswap(int* a, int* b)&#123; // 位运算加速的快速交换 - 用法 qswap(&amp;a, &amp;b); (*a) ^= (*b) ^= (*a) ^= (*b); return;&#125;inline int qread()&#123; // 快速读入int - 返回 读入的数 char c = getchar(); int f = 1, x = 0; while(!isdigit(c))&#123;if(c == '-') f= -1; c = getchar();&#125; while(isdigit(c))&#123;x = x * 10 + c - '0'; c = getchar();&#125; return f * x;&#125;int main()&#123; #ifndef OJ freopen("test.in", "r", stdin); freopen("test.out", "w", stdout); #endif #ifndef OJ fclose(stdin); fclose(stdout); #endif return 0; &#125; 说明 12行 关于inline内联函数的使用： inline的作用是替代C语言中define的。 inline [百度百科]：define不能进行参数有效性的检测，也就不能享受C++编译器严格类型检查的好处，另外它的返回值也不能被强制转换为可转换的合适的类型而且存在二义性问题 12行 关于位运算max&amp;min&amp;abs 位运算实现int的abs/min/max函数 [CSDN] 12行 关于C++常用位运算 C/C++位运算技巧 [CSDN] 45行 关于文件操作 LoveYayoi的std_src.cpp源码 [GitHub] 网上其他教程实在是太坑爹了 C的文件操作 C语言中输入输出重定，freopen()妙用。 [ChinaUnix] 判断是否度入到文件尾 12345string t;while(!feof(stdin))&#123; cin&gt;&gt;t; cout&lt;&lt;t&lt;&lt;endl;&#125; 35行 关于快速读入 快速读入 [CSDN] 如何看待在OI/ACM赛事广为使用的快速读入整数？ [ZhiHu] 读入string/char之类的最好直接cin、cout，**千万不要自己判&quot;\n&quot;**免得莫名被卡 好文章之ACM常用工具函数整理 [ACM]常用工具函数整理 [CSDN]]]></content>
-      <categories>
-        <category>C++编程技巧</category>
-      </categories>
-      <tags>
-        <tag>记录</tag>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F08%2F19%2Fhello-world.html</url>
-    <content type="text"><![CDATA[Hexo emmm, 一万年总算吧Hexo和Node.js环境搞完了乱多坑，累死了。 顺便还支持了Nodejs-Portable ，记得来Star一下哦~ 感觉可能还是静态站好一些吧，暂时也用不到动态站的很多功能= = 不去换个环境， 你永远不知道你错过的是什么样的精彩 2017.08.19 20:02:22 一个生成Modern ICON的好工具呦 Wordpress(outofdate) 总算把服务器搭完了，接下来是慢慢满满的期待呢。 – WordPress 2017.7.14 13:33:33]]></content>
-      <categories>
-        <category>站点日志</category>
-      </categories>
-      <tags>
-        <tag>建站</tag>
-        <tag>记录</tag>
-      </tags>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[PjOWM]]></title>
+      <url>/2017/10/28/PJOWM.html</url>
+      <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+</script>
+<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>]]></content>
+      
+        
+        <tags>
+            
+            <tag> 总结 </tag>
+            
+            <tag> PJOW </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2017pP]]></title>
+      <url>/2017/10/20/2017pP.html</url>
+      <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX1+Xnq+CMNKzcN+als/7s8o+kXqJ1zC4H+8KDDLas1jXLepDeZc+fzgOk9lYj4umEEdsQNLRR8AylJFQmBVNu4BRoD+AbOFTdZVdK8XIyxv6DOcQ1qbiaKGxeW8XbSbASOs0DdJ0+Ih8Ih3mf87896NkMqmGf8Nq3Bri3MYvkyj0LmPTT9DvOLBp</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[NOIP 2017 提高组初赛总结]]></title>
+      <url>/2017/10/14/noip2017Preliminary.html</url>
+      <content type="html"><![CDATA[<p>应该是最后一次参加NOIP了吧，已经高二了时间和心思也不能安心得抽出来了。就认真总结一下这次的初赛卷吧。</p>
+<a id="more"></a>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=40257852&auto=1&height=66"></iframe>
+<h1 id="初赛分析"><a class="markdownIt-Anchor" href="#初赛分析"></a> 初赛分析</h1>
+<h2 id="试卷及答案资源"><a class="markdownIt-Anchor" href="#试卷及答案资源"></a> 试卷及答案资源</h2>
+<p><a href="https://github.com/xiazeyu/OI_Resource/noip2017Preliminary" rel="external nofollow noopener noreferrer" target="_blank">GitHub</a></p>
+<p>说个笑话：试卷底部印着NOIP 2016 提高初赛</p>
+<h2 id="题目分析"><a class="markdownIt-Anchor" href="#题目分析"></a> 题目分析</h2>
+<p><em>有些题目我自己错了，而且只有答案，并不知道正解，所以打个*区分</em></p>
+<h3 id="单项选择"><a class="markdownIt-Anchor" href="#单项选择"></a> 单项选择</h3>
+<ol>
+<li>
+<p>坑爹题目= = 日常摸奖(1/2)系列</p>
+<p><a href="http://www.noi.cn/about/rules/744-ccfnoi" rel="external nofollow noopener noreferrer" target="_blank">[NOI官网]的官网神奇公告</a> 其实这道题原本在圈子里听说了，所以可以做出来的，但是日期就是这么迷迷糊糊地记错了</p>
+<p>2020年 <strong>NOI系列赛</strong> 不支持Pascal</p>
+<p>2022年 <strong>NOIP系列赛</strong> 不支持Pascal…</p>
+<p>结果错选了2020年。怎么说呢？ <strong>记得不准确</strong> 吧。</p>
+</li>
+<li>
+<p>常识，没什么好说的</p>
+<p>直接丢一篇我当时复习时认为最好的文章 <a href="http://blog.csdn.net/u011080472/article/details/51280919" rel="external nofollow noopener noreferrer" target="_blank">[CSDN]计算机原码、反码、补码详解</a></p>
+</li>
+<li>
+<p>空间单位换算 $ 1600 * 900 * 16 / (8 * 1024) = 2812.5$</p>
+</li>
+<li>
+<p>*数学题 （听说今年初赛考的数学题特别多？）</p>
+<p>赛后分析：2016年10月1日是周六，2012年10月1日是星期一…然后发现 $ 365 \bmod{ 7 } = 1$ 。感觉不对劲？作了一张表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">日期</th>
+<th style="text-align:center">星期真实</th>
+<th style="text-align:center">星期考试时猜测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2017.10.1</td>
+<td style="text-align:center">日</td>
+<td style="text-align:center"><em>日</em></td>
+</tr>
+<tr>
+<td style="text-align:center">2016.10.1</td>
+<td style="text-align:center">六</td>
+<td style="text-align:center"><em>六</em></td>
+</tr>
+<tr>
+<td style="text-align:center">2015.10.1</td>
+<td style="text-align:center">四</td>
+<td style="text-align:center"><em>六</em></td>
+</tr>
+<tr>
+<td style="text-align:center">2014.10.1</td>
+<td style="text-align:center">三</td>
+<td style="text-align:center"><em>六</em></td>
+</tr>
+<tr>
+<td style="text-align:center">2013.10.1</td>
+<td style="text-align:center">二</td>
+<td style="text-align:center"><em>六</em></td>
+</tr>
+<tr>
+<td style="text-align:center">2012.10.1</td>
+<td style="text-align:center">一</td>
+<td style="text-align:center"><em>五</em></td>
+</tr>
+<tr>
+<td style="text-align:center">2011.10.1</td>
+<td style="text-align:center">六</td>
+<td style="text-align:center"><em>五</em></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+<tr>
+<td style="text-align:center">1950.10.1</td>
+<td style="text-align:center">日</td>
+<td style="text-align:center"><em>三</em></td>
+</tr>
+<tr>
+<td style="text-align:center">1949.10.1</td>
+<td style="text-align:center">六</td>
+<td style="text-align:center"><em>三</em></td>
+</tr>
+<tr>
+<td style="text-align:center">1948.10.4</td>
+<td style="text-align:center">五</td>
+<td style="text-align:center"><em>三</em></td>
+</tr>
+</tbody>
+</table>
+<p>这也差太远了吧！其实貌似推算星期也不只是隔4年变一天这么简单的</p>
+<p>一开始发现 <a href="http://blog.csdn.net/whz_zb/article/details/7425260" rel="external nofollow noopener noreferrer" target="_blank">[CSDN]计算任何一天是星期几的几种算法</a> 有一个 <strong>Zeller公式</strong> 可以使用，但是估计是记不住。</p>
+<p>然后又找到了 <a href="http://www.cnblogs.com/carekee/articles/4529720.html" rel="external nofollow noopener noreferrer" target="_blank">[博客园]日历查询的算法 如何计算某一天是星期几</a> 中详细的推导过程。</p>
+<p>最朴素的计算方法是计算 $ 中间间隔的总天数 \bmod 7$ 。中间要注意2000年是闰年，还可以把1949年12月31日和2017年12月31日作为2个原点。然后 $  ((2017-1949 = 68) * 365 + (91 - 91) + 17 = 24837) \bmod 7 = 1 $</p>
+<p>写了段程序暴力验证结果也是 <strong>24837</strong> 天</p>
+</li>
+</ol>
+<div class="fold_parent"><div class="fold_hider"><div class="close hider_title">点击显/隐代码</div></div><div class="fold">
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> year = <span class="number">1949</span>, month = <span class="number">10</span>, day = <span class="number">1</span>, totdays = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(year != <span class="number">2017</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span>(month != <span class="number">10</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span>(day != <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>(!check())&#123;<span class="comment">// printf("%d%d%d,%d\n",year,month,day,totdays);</span></div><div class="line">        <span class="keyword">if</span>((month == <span class="number">2</span>)&amp;&amp;(day == <span class="number">28</span>))&#123;</div><div class="line">            <span class="keyword">if</span>(year % <span class="number">4</span> == <span class="number">0</span>)&#123;</div><div class="line">                month = <span class="number">3</span>;</div><div class="line">                day = <span class="number">1</span>;</div><div class="line">                totdays+= <span class="number">2</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                month = <span class="number">3</span>;</div><div class="line">                day = <span class="number">1</span>;</div><div class="line">                totdays++;</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>((month == <span class="number">12</span>)&amp;&amp;(day == <span class="number">31</span>))&#123;</div><div class="line">            year++;</div><div class="line">            month = <span class="number">1</span>;</div><div class="line">            day = <span class="number">1</span>;</div><div class="line">            totdays++;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>((day == <span class="number">30</span>)&amp;&amp;(month != <span class="number">12</span>))&#123;</div><div class="line">            <span class="keyword">if</span>(month == <span class="number">1</span>||month == <span class="number">3</span>||month == <span class="number">5</span>||month == <span class="number">7</span>||month == <span class="number">8</span>|| month == <span class="number">10</span>)&#123;</div><div class="line">                day = <span class="number">31</span>;</div><div class="line">                totdays++;</div><div class="line">                day = <span class="number">1</span>;</div><div class="line">                totdays++;</div><div class="line">                month++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                month++;</div><div class="line">                day = <span class="number">1</span>;</div><div class="line">                totdays++;</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;day++;</div><div class="line">        totdays++;&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; totdays &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+</div></div>
+<p>然而还不是很确定这样解对不对，不过至少答案看起来是对的</p>
+<ol start="5">
+<li>
+<p>图论+数学 基础题</p>
+<p>树的基本性质：总边数 = 结点数 - 1</p>
+<p>由此可以推得： $ m - k = n - 1 $ 解得 $ k = m - n + 1 $</p>
+</li>
+<li>
+<p>*求时间复杂度 与NOIP2013初赛15题相类似。</p>
+<p>正解都可以用 <a href="http://ych8700.blog.163.com/blog/static/149526022006112565136/" rel="external nofollow noopener noreferrer" target="_blank">[网易博客]主项定理 Master Method</a> 来求解，估计也是求时间复杂的的正解。我是还没怎么看懂，猜主要思想应该是把时间复杂度建立为一个 $ T(n) = a * T(n / b) + f(n) $ 的模型，然后比较 $ f(n) $ 与 $ n^{\log_b a} $ 两者的变化幅度（也就是数量级），取其中较大的那一个。</p>
+<p>这题解也不是很确定，猜可能带入特殊值是这样观察的：</p>
+<p>$ T(1) = 1 $</p>
+<p>$ T(2) = 2T(1) + 2 \log 2 = 2+2 \log 2 $</p>
+<p>$ T(3) = 2T(1) + 3 \log 3 = 2+3 \log 3 $</p>
+<p>$ T(4) = 2T(2) + 4 \log 4 = 4 + 4 \log 2 + 2 \log 2 = 4 + 3(\log4) \approx n\log n???$</p>
+<p>$ T(5) = 2T(2) + 5 \log 5 = 4 + 4 \log 2 + 5 \log 5 $</p>
+<p>好吧， 复盘<strong>带入计算也不知道</strong> 怎么能得出C解。</p>
+<p>不过总结了下主项定理，应该是判断出 $ f(n) = n \log n =n^{\log_22} $ 即 <strong>数量级相当</strong> ，然后得出时间复杂度在 $ f(n) $ 的基础上乘以 $ \log n $ 得出 $ O(n \log^2 n) $ 的。</p>
+</li>
+<li>
+<p>常识，模拟栈操作</p>
+</li>
+<li>
+<p>*目测是图论+“极简单”的排列组合</p>
+<p>先明确一下定义：简单无向连通图</p>
+<p>连通：指任意2个点有路径相连<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>无向：任意一条连接u、v的边都表示u连v和v连u<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup></p>
+<p>简单图：不存在平行边和自环的图<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<p>所以说我的思路是找那些可以90°旋转4次而各不相同的种类数，再寻找只能180°旋转和不能旋转的种类数。但是貌似 <strong>漏了2条对角线加一条边</strong> 的这种情况，而且遗漏了其它能旋转的图形。 可能是 <strong>枚举的方法</strong> 不对（我是按加边枚举的，不知道有没有更好的方法）</p>
+</li>
+<li>
+<p>隔板法！这玩意在考试之前还仔细研究过，是一个好东西。<a href="https://baike.baidu.com/item/%E9%9A%94%E6%9D%BF%E6%B3%95" rel="external nofollow noopener noreferrer" target="_blank">[百度百科]隔板法</a></p>
+<p>就是 $ C^{空隔数}_{要插入的隔板数} $ 在本题中则为 $ C^9_3 $ 再牢记 $ C^n_m = m! / (n!(m-n)!) $ 轻松解决</p>
+</li>
+<li>
+<p>*据说正解是递推公式求通项公式，（感觉用微积分可以做，然而没学），我是手工暴力到 $ 21/32 $ 或者多少分之64然后找规律做的。</p>
+</li>
+<li>
+<p>*估计应该是 <strong>题目意思弄错了</strong> 。题目给的2个数组是 <strong>有序数组</strong> ，而 <a href="https://baike.baidu.com/item/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1639015?fr=aladdin#6" rel="external nofollow noopener noreferrer" target="_blank">[百度]归并排序-复杂度</a> 中所得出的时间复杂度应该是指数组无序的情况。有序的最坏情况可能是：</p>
+<p>设 $ n=5 $</p>
+<p>1-1;1-2;2-2;2-3;3-3;3-4;4-4;4-5;5-5</p>
+<p>共 $ 2n-1=9 $ 种这个意思，而不是无序数组的从头归并。</p>
+</li>
+<li>
+<p>经典数学题</p>
+<p>A与B比较，若相等，则假币必在C，否则假币在A。最后统计n数量确认是否继续搜索</p>
+</li>
+<li>
+<p>经典dp <a href="https://www.luogu.org/problem/show?pid=1216" rel="external nofollow noopener noreferrer" target="_blank">[Luogu]P1216 [USACO1.5]数字三角形 Number Triangles &amp; IOI94 数字三角形</a></p>
+<p>印象特别深，因为据说是OI界第一道dp的题目。思路很简单，从左和从右路径中取一个较大路径继续走即可。 <strong>注意！此处由于所求的是路径上的数之和，与种数等无关，因此不可作死+1</strong></p>
+</li>
+<li>
+<p>*数学 计算概率，至今不会计算</p>
+</li>
+<li>
+<p>数学 水题 $ 1 / 20 * 360 = 18 $ 几何概型</p>
+</li>
+</ol>
+<h3 id="不定项选择"><a class="markdownIt-Anchor" href="#不定项选择"></a> 不定项选择</h3>
+<ol>
+<li>对归并排序的还不是很熟悉，这张卷子又考了很多次归并，所以漏选了</li>
+<li>栈模拟</li>
+<li>这道题我备考时找到了这篇文章，挺不错的<a href="http://www.cnblogs.com/codingmylife/archive/2012/10/21/2732980.html" rel="external nofollow noopener noreferrer" target="_blank">[cnblog]稳定排序和不稳定排序</a></li>
+<li>常识</li>
+<li>摸奖日常蹦(2/2) 王选奖貌似是CCF承办的一个奖项</li>
+</ol>
+<h3 id="问题求解"><a class="markdownIt-Anchor" href="#问题求解"></a> 问题求解</h3>
+<ol>
+<li>这道题在挑战程序设计竞赛上有类似的题型<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> ，貌似是用数学方法做的</li>
+<li>暴力求解的，最小方案数漏了一种？</li>
+</ol>
+<h3 id="阅读程序写结果"><a class="markdownIt-Anchor" href="#阅读程序写结果"></a> 阅读程序写结果</h3>
+<ol>
+<li>
+<p>暴力递归，把整棵树都画下来即可</p>
+</li>
+<li>
+<p>看不出有什么规律</p>
+</li>
+<li>
+<p>和拓扑排序有关的题目，应该是考你会不会拓扑的实现一类的</p>
+</li>
+<li>
+<p>非常巧妙的几何题，从给定坐标出发不断以斜率为1或-1反弹，直到4角终止</p>
+</li>
+</ol>
+<h3 id="完成程序"><a class="markdownIt-Anchor" href="#完成程序"></a> 完成程序</h3>
+<ol>
+<li>
+<p>好吧，大整数除法一开始没看到题目中有%的操作，所以说做得非常迷茫，最后答案也没对几个。</p>
+</li>
+<li>
+<p>​最长路径，感觉在哪里想过</p>
+</li>
+</ol>
+<h1 id="个人总结"><a class="markdownIt-Anchor" href="#个人总结"></a> 个人总结</h1>
+<p>虽说是复盘，但是再看一遍还是好多题目不会。看来还是太水了。</p>
+<p>感觉最后一个星期狂刷往届试卷非常非常有用。</p>
+<hr>
+<p>20171020</p>
+<p>成绩终于还是出来了，13.5+4.5+2+10+7=37。嗯，怎么说呢，果然还是太菜了呢，需要更加努力。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://baike.baidu.com/item/%E8%BF%9E%E9%80%9A%E6%97%A0%E5%90%91%E5%9B%BE" rel="external nofollow noopener noreferrer" target="_blank">https://baike.baidu.com/item/连通无向图</a> <a href="#fnref1" class="footnote-backref">↩︎</a> <a href="#fnref1:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://baike.baidu.com/item/%E7%AE%80%E5%8D%95%E5%9B%BE" rel="external nofollow noopener noreferrer" target="_blank">https://baike.baidu.com/item/简单图</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>P150 3.2.2 — 挑战程序设计竞赛 第二版·人民邮电出版社·【日】秋叶拓哉 岩田阳一 北川宜稔·ISBN 978-7-115-32010-0 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      
+        <categories>
+            
+            <category> 总结 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 总结 </tag>
+            
+            <tag> 记录 </tag>
+            
+            <tag> C++ </tag>
+            
+            <tag> NOIP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Happy Birthday JHZ!]]></title>
+      <url>/2017/08/26/happy-birthday-jhz-2017.html</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="happy-birthday"><a class="markdownIt-Anchor" href="#happy-birthday"></a> Happy Birthday,</h2>
+<h3 id="jhz"><a class="markdownIt-Anchor" href="#jhz"></a> JHZ!</h3>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 生日祝福 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[stdsrc头文件记录]]></title>
+      <url>/2017/08/19/stdsrc-note.html</url>
+      <content type="html"><![CDATA[<p><a href="https://github.com/xiazeyu/OI_Resource/blob/master/Cpp_Programs/stdsrc.cpp" rel="external nofollow noopener noreferrer" target="_blank">源文件</a></p>
+<a id="more"></a>
+<h2 id="头文件"><a class="markdownIt-Anchor" href="#头文件"></a> 头文件</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LuN 100069</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> OJ</span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qmin</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123; <span class="comment">// 位运算加速的求较小数 - 返回值 较小数 </span></div><div class="line">	<span class="keyword">int</span> diff = b - a;</div><div class="line">	<span class="comment">// b &lt; a : a + (diff &amp; -1)</span></div><div class="line">	<span class="comment">// b &gt; a : a + (diff &amp; 0)</span></div><div class="line">	<span class="keyword">return</span> a + (diff &amp; (diff &gt;&gt; <span class="number">31</span>));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qmax</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123; <span class="comment">// 位运算加速的求较大数 - 返回值 较大数 </span></div><div class="line">	<span class="keyword">int</span> diff = b - a;</div><div class="line">	<span class="comment">// b &lt; a : b - (diff &amp; -1)</span></div><div class="line">	<span class="comment">// b &gt; a : b - (diff &amp; 0)</span></div><div class="line">	<span class="keyword">return</span> b - (diff &amp; (diff &gt;&gt; <span class="number">31</span>));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qabs</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123; <span class="comment">// 位运算加速的绝对值  - 返回值 绝对值 </span></div><div class="line">	<span class="keyword">int</span> t = (a &gt;&gt; <span class="number">31</span>);</div><div class="line">	<span class="keyword">return</span> (a + t) ^ t;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123; <span class="comment">// 判断奇偶性 - 返回 1 是奇数; 返回 0 是偶数 </span></div><div class="line">	<span class="keyword">return</span> a &amp; <span class="number">1</span> == <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">qswap</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span>* b)</span></span>&#123; <span class="comment">// 位运算加速的快速交换 - 用法 qswap(&amp;a, &amp;b);</span></div><div class="line">	(*a) ^= (*b) ^= (*a) ^= (*b);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qread</span><span class="params">()</span></span>&#123; <span class="comment">// 快速读入int - 返回 读入的数 </span></div><div class="line">	<span class="keyword">char</span> c = getchar();</div><div class="line">	<span class="keyword">int</span> f = <span class="number">1</span>, x = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123;<span class="keyword">if</span>(c == <span class="string">'-'</span>) f= <span class="number">-1</span>; c = getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))&#123;x = x * <span class="number">10</span> + c - <span class="string">'0'</span>; c = getchar();&#125;</div><div class="line">	<span class="keyword">return</span> f * x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="meta">#<span class="meta-keyword">ifndef</span> OJ</span></div><div class="line">	freopen(<span class="string">"test.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">	freopen(<span class="string">"test.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line">	<span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="meta">#<span class="meta-keyword">ifndef</span> OJ</span></div><div class="line">	fclose(<span class="built_in">stdin</span>);</div><div class="line">	fclose(<span class="built_in">stdout</span>);</div><div class="line">	<span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!-- more -->
+<h2 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h2>
+<ul>
+<li>
+<p>12行 关于inline内联函数的使用：<br>
+inline的作用是替代C语言中define的。<br>
+<a href="https://baike.baidu.com/item/inline/10566989?fr=aladdin" title="inline 百度百科" rel="external nofollow noopener noreferrer" target="_blank">inline [百度百科]</a>：define<strong>不能进行参数有效性的检测</strong>，也就<strong>不能享受C++编译器严格类型检查的好处</strong>，另外它的<strong>返回值也不能被强制转换为可转换的合适的类型</strong>而且存在<strong>二义性问题</strong></p>
+</li>
+<li>
+<p>12行 关于位运算max&amp;min&amp;abs<br>
+<a href="http://blog.csdn.net/chaosllgao/article/details/6185319" title="位运算实现int的abs/min/max函数 [CSDN]" rel="external nofollow noopener noreferrer" target="_blank">位运算实现int的abs/min/max函数 [CSDN]</a></p>
+</li>
+<li>
+<p>12行 关于C++常用位运算<br>
+<a href="http://blog.csdn.net/zouliping123/article/details/8995373" title="C/C++位运算技巧 [CSDN]" rel="external nofollow noopener noreferrer" target="_blank">C/C++位运算技巧 [CSDN]</a></p>
+</li>
+<li>
+<p>45行 关于文件操作<br>
+<a href="https://github.com/LoveYayoi/OI-Package/blob/master/DS%26Algorithm-Models/%E7%BC%BA%E7%9C%81%E6%BA%90%E4%B8%80%E7%B1%BB/std_src.cpp" title="LoveYayoi的std_src.cpp源码 [GitHub]" rel="external nofollow noopener noreferrer" target="_blank">LoveYayoi的std_src.cpp源码 [GitHub]</a> 网上其他教程实在是太坑爹了<br>
+C的文件操作 <a href="http://blog.chinaunix.net/uid-11600035-id-2866019.html" title="C语言中输入输出重定，freopen()妙用。 [ChinaUnix]" rel="external nofollow noopener noreferrer" target="_blank">C语言中输入输出重定，freopen()妙用。 [ChinaUnix]</a><br>
+判断是否度入到文件尾</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> t;</div><div class="line"><span class="keyword">while</span>(!feof(<span class="built_in">stdin</span>))&#123;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;t;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;t&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>35行 关于快速读入<br>
+<a href="http://blog.csdn.net/WhiStLenA/article/details/51712580" title="快速读入 [CSDN]" rel="external nofollow noopener noreferrer" target="_blank">快速读入 [CSDN]</a><br>
+<a href="https://www.zhihu.com/question/49059234" title="如何看待在OI/ACM赛事广为使用的快速读入整数？ [ZhiHu]" rel="external nofollow noopener noreferrer" target="_blank">如何看待在OI/ACM赛事广为使用的快速读入整数？ [ZhiHu]</a></p>
+</li>
+<li>
+<p>读入string/char之类的最好直接cin、cout，**千万不要自己判&quot;\n&quot;**免得莫名被卡</p>
+</li>
+<li>
+<p>好文章之ACM常用工具函数整理<br>
+<a href="http://blog.csdn.net/sr_19930829/article/details/46048571" title="[ACM]常用工具函数整理 [CSDN]" rel="external nofollow noopener noreferrer" target="_blank">[ACM]常用工具函数整理 [CSDN]</a></p>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> C++编程技巧 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 记录 </tag>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/2017/08/19/hello-world.html</url>
+      <content type="html"><![CDATA[<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
+<p>emmm, 一万年总算吧Hexo和Node.js环境搞完了乱多坑，累死了。</p>
+<p>顺便还支持了<a href="https://github.com/crazy-max/nodejs-portable" rel="external nofollow noopener noreferrer" target="_blank">Nodejs-Portable</a> ，记得来Star一下哦~</p>
+<p>感觉可能还是静态站好一些吧，暂时也用不到动态站的很多功能= =</p>
+<blockquote>
+<p>不去换个环境， 你永远不知道你错过的是什么样的精彩</p>
+</blockquote>
+<p>2017.08.19 20:02:22</p>
+<a id="more"></a>
+<p><a href="http://www.uisdc.com/design-perfect-favicon-icon" rel="external nofollow noopener noreferrer" target="_blank">一个生成Modern ICON的好工具呦</a></p>
+<h1 id="wordpressoutofdate"><a class="markdownIt-Anchor" href="#wordpressoutofdate"></a> Wordpress(outofdate)</h1>
+<blockquote>
+<p>总算把服务器搭完了，接下来是<s>慢慢</s>满满的期待呢。</p>
+<p>– WordPress 2017.7.14 13:33:33</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 站点日志 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 建站 </tag>
+            
+            <tag> 记录 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
 </search>
