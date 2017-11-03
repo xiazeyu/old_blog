@@ -1,12 +1,12 @@
 {
 	"type":"Live2D Model Setting",
-    "name":"asuna_01",
-	"model":"moc/asuna_01.moc",
+    "name":"asuna_04",
+	"model":"moc/asuna_04.moc",
 	"textures":[
-		"moc/asuna_01.1024/texture_00.png",
-		"moc/asuna_01.1024/texture_01.png",
-		"moc/asuna_01.1024/texture_02.png",
-		"moc/asuna_01.1024/texture_03.png"
+		"moc/asuna_04.1024/texture_00.png",
+		"moc/asuna_04.1024/texture_01.png",
+		"moc/asuna_04.1024/texture_02.png",
+		"moc/asuna_04.1024/texture_03.png"
 	],
 	"expressions":[
 		{"name":"F_FUN","file":"exp/F_FUN.exp.json"},
@@ -28,6 +28,7 @@
 	],
 	"motions":{
 		"":[
+			{"file":"mtn/I_ANGRY_W.mtn"},
 			{"file":"mtn/I_FUN.mtn"},
 			{"file":"mtn/I_FUN_S.mtn"},
 			{"file":"mtn/I_FUN_W.mtn"},
@@ -42,8 +43,7 @@
 			{"file":"mtn/REPEAT_02.mtn"},
 			{"file":"mtn/REPEAT_03.mtn"},
 			{"file":"mtn/I_ANGRY.mtn"},
-			{"file":"mtn/I_ANGRY_S.mtn"},
-			{"file":"mtn/I_ANGRY_W.mtn"}
+			{"file":"mtn/I_ANGRY_S.mtn"}
 		],
 		"idle":[
 			{"file":"mtn/IDLING_01.mtn"},
@@ -51,5 +51,5 @@
 			{"file":"mtn/IDLING_03.mtn"}
 		]
 	},
-	"physics":"asuna_01.physics.json"
+	"physics":"asuna_04.physics.json"
 }

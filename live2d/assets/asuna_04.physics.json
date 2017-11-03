@@ -126,6 +126,42 @@
 					"weight":1
 				}
 			]
+		},
+		{
+			"label":"bust",
+			"setup":{
+				"length":0.16,
+				"regist":0.65,
+				"mass":0.13
+			},
+			"src":[
+				{
+					"id":"PARAM_BODY_ANGLE_X",
+					"ptype":"x",
+					"scale":0.015,
+					"weight":1
+				},
+				{
+					"id":"PARAM_BODY_ANGLE_Z",
+					"ptype":"angle",
+					"scale":2.4,
+					"weight":1
+				},
+				{
+					"id":"PARAM_BODY_ANGLE_Y",
+					"ptype":"y",
+					"scale":0.04,
+					"weight":1
+				}
+			],
+			"targets":[
+				{
+					"id":"PARAM_BUST_Y",
+					"ptype":"angle",
+					"scale":0.022,
+					"weight":1
+				}
+			]
 		}
 	]
 }
