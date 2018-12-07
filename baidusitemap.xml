@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://xiazeyu_2011.coding.me/2018/12/07/NOIP2017.html</loc>
+    <lastmod>2018-12-07T16:21:58.471Z</lastmod>
+    <data>
+        <display>
+        <title>NOIP2017游记&退役记</title>
+        <pubTime>2018-12-07T13:04:37.000Z</pubTime>
+        
+        <tag>OI</tag>
+         
+         
+           
+             
+              <breadCrumb title="杂记" url="https://xiazeyu_2011.coding.me/categories/%E6%9D%82%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://xiazeyu_2011.coding.me/2017/10/14/noip2017Preliminary.html</loc>
     <lastmod>2017-11-26T02:30:39.745Z</lastmod>
     <data>
@@ -11,13 +31,13 @@
         <title>NOIP 2017 提高组初赛总结</title>
         <pubTime>2017-10-14T14:14:30.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>记录</tag>
          
-        <tag>NOIP</tag>
-         
         <tag>C++</tag>
+         
+        <tag>总结</tag>
+         
+        <tag>NOIP</tag>
          
          
            
